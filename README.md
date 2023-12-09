@@ -73,7 +73,7 @@ Here's the recording of the demo of our application -
 - [Aiman Fatima](https://github.com/aimanfatima)
 - [Ajinkya Chaudhari](https://github.com/ajinkya-ch)
 - [Isha Joglekar](https://github.com/ishajoglekar)
-- [Thrisha Kopula](https://github.com/)
+- [Thrisha Kopula](https://github.com/ThrishaKopula)
 - [Ujjawal Panchal](https://github.com/Ujjawal-K-Panchal)
 
 
