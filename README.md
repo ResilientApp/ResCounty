@@ -69,13 +69,14 @@ Here's the recording of the demo of our application -
 
 [Medium Blog](https://medium.com/@ajinkyajc/rescounty-resilient-land-transfers-begin-here-6d3ff5a0a9f4)
 
-## 5. Contributors
-
-- [Aiman Fatima](https://github.com/aimanfatima)
-- [Ajinkya Chaudhari](https://github.com/ajinkya-ch)
-- [Isha Joglekar](https://github.com/ishajoglekar)
-- [Thrisha Kopula](https://github.com/ThrishaKopula)
-- [Ujjawal Panchal](https://github.com/Ujjawal-K-Panchal)
+## 6. Contributors
+| Name | Contributions |
+| :--- |  :--- |
+| [Aiman Fatima](https://github.com/aimanfatima) | Backend Developer and Chief of Planning, handled backend tasks and leads strategic planning efforts for our projects.| 
+| [Ajinkya Chaudhari](https://github.com/ajinkya-ch) | Frontend Developer and Lead of Documentation, created user-friendly interfaces and keeps records of development. |
+| [Isha Joglekar](https://github.com/ishajoglekar) |Full Stack Developer and Team Lead, designed ResVault's backend components and ensuring smooth integration with ResCounty. | 
+| [Thrisha Kopula](https://github.com/ThrishaKopula) | Lead Frontend Designer, added a touch of visual brilliance to projects and contributed to strategic planning. |
+| [Ujjawal Panchal](https://github.com/Ujjawal-K-Panchal)| System Architect & DevOps Manager, planned the system architecture and managed DevOps practices for ResCounty. | 
 
 
 
