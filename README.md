@@ -52,13 +52,29 @@ If you prefer to run the project locally, please follow these sub-steps:
 
 <img width="1440" alt="image" src="https://github.com/aimanfatima/ResCounty/assets/30265320/f0dd862a-83db-4192-8fba-cd7f2511b150">
 
+---
+
 ## 3. System Architecture
 
 <img width="1440" alt="image" src="https://github.com/aimanfatima/ResCounty/assets/30265320/a8b0d74d-bb99-41a2-95be-0bc716a84d74">
 
+---
+
 ## 4. Demo
 
+Here's the recording of the demo of our application - 
+
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/yZWFEVJ81lQ/0.jpg)](http://www.youtube.com/watch?v=yZWFEVJ81lQ "Res County")
+
+---
+
+## 5. Contributors
+
+- [Aiman Fatima](https://github.com/aimanfatima)
+- [Ajinkya Chaudhari](https://github.com/ajinkya-ch)
+- [Isha Joglekar](https://github.com/ishajoglekar)
+- [Thrisha Kopula](https://github.com/)
+- [Ujjawal Panchal](https://github.com/Ujjawal-K-Panchal)
 
 
 
