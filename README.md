@@ -2,24 +2,51 @@
 
 ResCounty is a blockchain-based land registration system that offers a transformative solution to the traditional complexities of property ownership. The app is built to revolutionize land transactions by creating a decentralized marketplace where buyers and sellers can engage in secure, transparent, and efficient land transactions using blockchain technology. Buyers can confidently verify property histories, and sellers benefit from a streamlined, cost-effective platform. This innovative approach not only enhances trust between parties but also sets a new standard for the future of land transactions, combining the security of blockchain with the ease of a user-friendly marketplace interface.
 
-## 1. Setup
+## 1. ResCounty Project Setup Instructions
 
-The application is hosted here - https://aimanfatima.github.io/ResCounty/ 
+Please follow these steps for setting up and running the ResCounty project.
 
-1. Install python3 
-2. Install and setup [ResVault](https://blog.resilientdb.com/2023/09/21/ResVault.html)
-3. The application is hosted here - https://aimanfatima.github.io/ResCounty/ which you can directly use to test it out and play around
-4. If you want to locally run the project -
-    1. Clone the repo
-    ```
+## Prerequisites
+
+Before proceeding, ensure that you have Python 3 installed on your system.
+
+## Step-by-Step Instructions
+
+### Step 1: Install and Configure ResVault
+
+1. Install ResVault chrome extension by following the instructions provided in this comprehensive guide: [ResVault Installation Guide](https://blog.resilientdb.com/2023/09/21/ResVault.html).
+
+### Step 2: Accessing the Application
+
+1. The ResCounty application is accessible at the following URL: [ResCounty Application](https://aimanfatima.github.io/ResCounty/). You may use this link to test and explore the application's features.
+
+### Step 3: Local Deployment (Optional)
+
+If you prefer to run the project locally, please follow these sub-steps:
+
+1. **Clone the Repository:**
+    - Execute the following commands in your terminal:
+        ```
         git clone https://github.com/aimanfatima/ResCounty.git
-    ```
-    2. Run the service
-    ```
+        cd ResCounty
+        ```
+
+2. **Launch the Service:**
+    - Start the local server by running:
+        ```
         python3 -m http.server 8000
-    ```
-5. Make sure your ResVault is turned on and you register an account in the wallet.
-6. Tip: inspect the ResVault chrome extension, so that it is always visible (because of an existing bug, for transactions the webpage doesn't commmunicate with the wallet unless it is actively running.
+        ```
+
+### Step 4: ResVault Integration
+
+1. Ensure that the ResVault (chrome extension) is active. 
+2. Register an account in the ResVault wallet (which will interact with ResCounty application to perform transactions).
+
+### Additional Tip
+
+- Due to a known issue, it is advisable to keep the ResVault Chrome extension visible at all times. To do this, simply inspect the ResVault Chrome extension, and then proceed. This ensures proper communication between the webpage and the wallet for transactions, as the wallet requires active running to function correctly.
+
+---
 
 ## 2. Workflow
 
