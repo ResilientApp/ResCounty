@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>ResCounty</title>
+  <meta name="description" content="One-stop blockchain based banking system">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700'>
+  <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+  <!-- <link rel="stylesheet" href="assets/css/loader.css"> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.resilientdb.com/resilient-sdk.js" type="module"></script>
+<script src="./js/script.js" type="module"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <section class="container">
+    <header>Registration Page</header>
+    <form action="" class="form" id="formreg">
+      <div class="input-box">
+        <label>Username</label>
+        <input type="text" placeholder="Enter username" required name="name" />
+      </div>
+
+      <div class="input-box">
+        <label>Password</label>
+        <input type="password" placeholder="Enter password" required/>
+      </div>
+
+  <div class="input-box">
+    <label>Social Security Number</label>
+    <input type="password" placeholder="Enter social security number" name="ssn" required/>
+    </div>
+      
+      <div class="role-box">
+        <h3>Role</h3>
+        <div class="role-option row pb-3">
+          <div class="role col-md-4">
+            <input type="radio" id="check-seller" name="role" value="role-seller" />
+            <label for="check-seller">Seller</label>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="role col-md-4">
+            <input type="radio" id="check-buyer" name="role" value = "role-buyer" />
+            <label for="check-buyer">Buyer</label>
+          </div>
+        </div>
+      </div>
+      <input class="btn fill_logout" type="submit" id="register"></button>
+      <div>
+        Already Registered? <a href="login.html">Login here</a>
+      </div>
+    </form>
+  </section>
+  
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js" />
+<div class="loader-container">
+  <div class="loader"></div>
+</div>
+
+</body>

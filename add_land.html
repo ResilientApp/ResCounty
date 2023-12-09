@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Add Land</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="./js/script.js" type="module"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <script type="module">
+        import { getSellerData } from './js/seller.js';
+    
+        window.redirectToPage = function(page) {
+            window.location.href = page;
+        }
+        window.onload = async function () {
+          var sellerData = await getSellerData(null, localStorage.getItem('currentPublicKey'));
+          var lands = sellerData.lands;
+          var currentBalance = sellerData.currentBalance;
+          document.getElementById('balance').innerHTML = currentBalance;
+          var user_name = localStorage.getItem('user_name');
+          document.getElementById('userN').innerHTML = user_name;
+      }
+    
+      </script>
+<div id="sidebar">
+    <div id="logo">
+        <h1 id="userName"><i class="fa-solid fa-user" style="color: #ffffff;"></i><span id="userN"></span></h1>
+        <p id="walletAmount"><i class="fa-solid fa-wallet" style="color: #ffffff;"></i>Wallet $<span id="balance"></span></p>
+    </div>
+  
+    <div id="nav">
+        <a href="seller_dashboard.html"> <i class="fa-solid fa-gauge"></i>Dashboard</a>
+        <a href="add_land.html"><i class="fa-regular fa-plus" style="color: #ffffff;"></i>Add Land</a>
+    </div>
+  </div>
+<script>
+    function validateZipCode() {
+        var zipCodeInput = document.getElementById('zip_code');
+        var zipError = document.getElementById('zip_error');
+
+        // Remove any existing error message
+        zipError.innerHTML = '';
+
+        // Get the value entered by the user
+        var zipCode = zipCodeInput.value.trim();
+
+        // Check if the input is a 5-digit number
+        var zipRegex = /^\d{5}$/;
+        
+        if (!zipRegex.test(zipCode)) {
+            zipError.innerHTML = 'Please enter a valid 5-digit zipcode.';
+            zipCodeInput.classList.add('error'); // You can add a class for styling purposes
+        } else {
+            zipCodeInput.classList.remove('error');
+        }
+        enableSubmitButton();
+    }
+
+    function enableSubmitButton() {
+        var zipCodeInput = document.getElementById('zip_code');
+        var submitButton = document.getElementById('submit');
+
+        // Check if there are no errors and the input is not empty
+        if (!zipCodeInput.classList.contains('error') && zipCodeInput.value.trim() !== '') {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+</script>
+<div id="content">
+	<header>
+        <h1>Add Land</h1>
+        <button class="logoutbtn fill_logout" onclick="redirectToPage('index.html')"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>Logout</button>
+    </header>
+    
+    <main>
+        <style>
+            /* Import Google font - Poppins */
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+            * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            }
+            .container {
+            position: relative;
+            max-width: 700px;
+            width: 100%;
+            background: #e5e5e5;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            }
+            .container header {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 500;
+            text-align: center;
+            }
+            .container .form {
+            margin-top: 30px;
+            }
+            .form .input-box {
+            width: 100%;
+            margin-top: 20px;
+            }
+            .input-box label {
+            color: #333;
+            }
+            .form :where(.input-box input, .select-box) {
+            position: relative;
+            height: 50px;
+            width: 100%;
+            outline: none;
+            font-size: 1rem;
+            color: #707070;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 0 15px;
+            }
+            .input-box input:focus {
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+            }
+            .form .column {
+            display: flex;
+            column-gap: 15px;
+            }
+            .form .role-box {
+            margin-top: 20px;
+            }
+            .role-box h3 {
+            color: #333;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+            }
+            .form :where(.role-option, .role) {
+            display: flex;
+            align-items: center;
+            column-gap: 50px;
+            flex-wrap: wrap;
+            }
+            .form .role {
+            column-gap: 5px;
+            }
+            .role input {
+            accent-color: rgb(130, 106, 251);
+            }
+            .form :where(.role input, .role label) {
+            cursor: pointer;
+            }
+            .role label {
+            color: #707070;
+            }
+            .address :where(input, .select-box) {
+            margin-top: 15px;
+            }
+            .select-box select {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            color: #707070;
+            font-size: 1rem;
+            }
+            .form button {
+            height: 55px;
+            width: 100%;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 30px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: rgb(97, 131, 203);
+            }
+            .form button:hover {
+            background: rgb(88, 56, 250);
+            }
+            #submit:disabled {
+                background-color: #d3d3d3; 
+                cursor: not-allowed; 
+            }
+            /*Responsive*/
+            @media screen and (max-width: 500px) {
+            .form .column {
+                flex-wrap: wrap;
+            }
+            .form :where(.role-option, .role) {
+                row-gap: 15px;
+            }
+            }
+        </style>
+        <form action="./seller_dashboard.html" class="form" id="formaddland" method="POST" onsubmit="return validateForm()">
+            <div class="input-box">
+              <label>City</label>
+              <input type="text" placeholder="Enter city" name="city"/>
+            </div>
+
+            <div class="input-box">
+                <label>State</label>
+                <input type="text" placeholder="Enter state" name="state" />
+            </div>
+      
+            <div class="input-box">
+                <label>Plot No</label>
+                <input type="text" placeholder="Enter Plot no" name="plot_no" />
+            </div>
+      
+            <div class="input-box">
+                <label>Zipcode</label>
+                <input type="text" placeholder="Enter Zipcode" name="zip_code" id="zip_code" oninput="validateZipCode()" />
+                <div id="zip_error" class="error-message"></div>
+            </div>
+      
+            <div class="input-box">
+              <label>Price</label>
+              <input type="text" placeholder="Enter price" name="price" />
+            </div>
+            <button id="submit" disabled>Submit</button>
+            <!-- <input type="submit" id="register">Submit</button> -->
+        </form>
+    </main>
+</div>
+
+</body>
+</html>

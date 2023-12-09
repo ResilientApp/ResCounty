@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Land Buyer Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="./js/script.js" type="module"></script>
+    <script src="./js/seller.js" type="module"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      #map { 
+        height: 400px;
+        border-radius: 25px;
+        z-index: -1;
+        
+     }
+    </style>
+    <title>City Map</title>
+</head>
+<body>
+    <!-- <div id="map"></div> -->
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    
+    <script type="module">
+        import { getBuyerData, buyNow } from './js/seller.js';
+
+        window.redirectToPage = function(page) {
+            window.location.href = page;
+        }
+        window.openModal = function(landPrice) {
+            
+            var modal = document.getElementById('modal');
+            var modalContent = document.querySelector('.modal-content');
+
+            modal.style.display = 'block';
+            document.getElementById('modalPrice').innerHTML = landPrice;
+
+            // Use setTimeout to allow the browser to apply styles before adding 'show' class
+            setTimeout(function() {
+                modal.classList.add('show');
+                modalContent.classList.add('show');
+            }, 10);
+        }
+
+        window.closeModal = function() {
+            // document.getElementById('modal').style.display = 'none';
+
+            var modal = document.getElementById('modal');
+            var modalContent = document.querySelector('.modal-content');
+
+            modal.classList.add('fade-out');
+            modalContent.classList.add('fade-out');
+
+            setTimeout(function() {
+                modal.classList.remove('show', 'fade-out');
+                modalContent.classList.remove('show', 'fade-out');
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        window.confirmPurchase = function() {
+            // Add logic for handling the purchase
+            // alert('Land purchased successfully!');
+            closeModal(); // Close the modal after purchase confirmation
+        }
+
+        // Function to open the "DETAILS" modal
+        window.openDetailsModal = function(landName, landPrice, landID) {
+            var modal = document.getElementById('detailsModal');
+            var modalContent = document.querySelector('.modal-content');
+
+            modal.style.display = 'block';
+            document.getElementById('detailsModalTitle').innerHTML = landName;
+            document.getElementById('detailsModalPrice').innerHTML = landPrice;
+            document.getElementById('detailsModalID').innerHTML = Math.floor(landID / Math.pow(10, 5));
+            document.getElementById('detailsModalZipcode').innerHTML = landID % 100000;
+
+            // Use setTimeout to allow the browser to apply styles before adding 'show' class
+            setTimeout(function() {
+                modal.classList.add('show');
+                modalContent.classList.add('show');
+            }, 10);
+        }
+
+        // Function to close the "DETAILS" modal
+        window.closeDetailsModal = function() {
+            // document.getElementById('detailsModal').style.display = 'none';
+
+
+            var modal = document.getElementById('detailsModal');
+            var modalContent = document.querySelector('.modal-content');
+
+            modal.classList.add('fade-out');
+            modalContent.classList.add('fade-out');
+
+            setTimeout(function() {
+                modal.classList.remove('show', 'fade-out');
+                modalContent.classList.remove('show', 'fade-out');
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        window.onload = async function() {
+            if (!localStorage.getItem("currentPublicKey")) {
+                redirectToPage('login.html');
+            }
+            var buyerData = await getBuyerData();
+            var buyerUsername = buyerData.buyerId;
+            var lands = buyerData.lands;
+            var currentBalance = buyerData.currentBalance;
+            var buyerId = buyerData.buyerId;
+            document.getElementById('balance').innerHTML = currentBalance;
+            
+            var user_name = localStorage.getItem('user_name');
+            console.log(user_name);
+            document.getElementById('userN').innerHTML = user_name;
+
+            var availableLands = [];
+            var soldLands = [];
+
+            for (let i = 0; i < lands.length; i++) {
+                var newDivContent;
+                if (lands[i].status == "available") {
+                    newDivContent = `
+                        <article class="landCard">
+                            <div class="banner-image"> </div>
+                            <h2 id="priceA">$${lands[i].price}</h2>
+                            <p id="locationA">${lands[i].name}, ${lands[i].state}</p>
+                            <p id="status"> ${lands[i].status} </p>
+                            
+                            <div class="button-wrapper"> 
+                                <button class="btn outline">DETAILS</button>
+                                <button class="btn fill buy-now-btn" id="submitBtn">BUY NOW</button>
+                            </div>
+                        </article>
+                    `;
+                    availableLands.push({
+                        content: newDivContent,
+                        landInfo: lands[i]
+                    });
+                    addMarker(lands[i].name, lands[i].state);
+                    // console.log(lands[i])F
+                } else if (lands[i].status == "sold") {
+                    newDivContent = `
+                        <article class="landCard greyed-out">
+                            <div class="banner-image"> </div>
+                            <h2 id="priceA">$${lands[i].price}</h2>
+                            <p id="locationA">${lands[i].plotno} - ${lands[i].name}, ${lands[i].state}</p>
+                            <p id="status"> ${lands[i].status} </p>
+                            
+                            <div class="button-wrapper"> 
+                                <button class="btn outline" id="detailsBtn" disabled>DETAILS</button>
+                                <button class="btn fill buy-now-btn" id="submitBtn" disabled>SOLD!</button>
+                            </div>
+                        </article>
+                    `;
+                    soldLands.push({
+                        content: newDivContent,
+                        landInfo: lands[i]
+                    });
+                    // addMarker(lands[i].city, lands[i].state);
+                }
+            }
+
+            var orderedLands = availableLands.concat(soldLands);
+
+            for (let j = 0; j < orderedLands.length; j++) {
+                var newDiv = document.createElement('div');
+                newDiv.innerHTML += orderedLands[j].content;
+                document.getElementById('landListings').appendChild(newDiv);
+
+                newDiv.querySelector('.fill').addEventListener('click', (function(landInfo) {
+                    return function() {
+                        openModal(landInfo.price);
+                    };
+                })(orderedLands[j].landInfo));
+
+                newDiv.querySelector('.outline').addEventListener('click', (function(landInfo) {
+                    return function() {
+                        openDetailsModal(landInfo.name, landInfo.price, landInfo.id);
+                    };
+                })(orderedLands[j].landInfo));
+
+                newDiv.addEventListener('click', (function(landInfo) {
+                    return function(event) {
+                        if (event.target.classList.contains('buy-now-btn')) {
+                            // Call buyNow when the "BUY NOW" button is clicked
+                            buyNow(landInfo.id, landInfo.name, landInfo.state, landInfo.price, currentBalance, buyerId, landInfo.sellerCurrentBalance, landInfo.sellerPublicKey, landInfo.sellerId, landInfo.landId);
+                        }
+                    };
+                })(orderedLands[j].landInfo));
+            }
+        };
+
+        // window.onload = async function(){
+        
+        //     var buyerData = await getBuyerData();
+            
+        //     var lands = buyerData.lands;
+        //     var currentBalance = buyerData.currentBalance;
+        //     var buyerId = buyerData.buyerId;
+        //     document.getElementById('balance').innerHTML = currentBalance;
+
+
+        //   for( let i =0;i<lands.length;i++){
+
+        //     var newDivContent;
+        //     if (lands[i].status == "available") {
+        //         newDivContent = `
+        //         <article class="landCard">
+        //             <div class="banner-image"> </div>
+        //             <h2 id="landA">${lands[i].name}</h2>
+        //             <p id="locationA">Location: ${lands[i].state} X</p>
+        //             <p id="priceA">Price: $ ${lands[i].price}</p>
+        //             <p id="status"> ${lands[i].status} </p>
+                    
+        //             <div class="button-wrapper"> 
+        //                 <button class="btn outline">DETAILS</button>
+        //                 <button class="btn fill buy-now-btn" id="submitBtn">BUY NOW</button>
+        //             </div>
+        //         </article>
+        //         `;
+        //     } else if (lands[i].status == "sold") {
+        //         newDivContent = `
+        //             <article class="landCard greyed-out">
+        //                 <div class="banner-image"> </div>
+        //                 <h2 id="landA">${lands[i].name}</h2>
+        //                 <p id="locationA">Location: ${lands[i].state} X</p>
+        //                 <p id="priceA">Price: $ ${lands[i].price}</p>
+        //                 <p id="status"> ${lands[i].status} </p>
+                        
+        //                 <div class="button-wrapper"> 
+        //                     <button class="btn outline" id="detailsBtn" disabled>DETAILS</button>
+        //                     <button class="btn fill buy-now-btn" id="submitBtn" disabled>SOLD!</button>
+        //                 </div>
+        //             </article>
+        //         `;
+        //     }
+      
+        //     // Create a new div element
+        //     var newDiv = document.createElement('div');
+      
+        //     // Set innerHTML using the template literal content
+        //     newDiv.innerHTML += newDivContent;
+        //     document.getElementById('landListings').appendChild(newDiv)
+        //     newDiv.querySelector('.fill').addEventListener('click', function() {
+        //         openModal(lands[i].price);
+        //     });
+
+        //     newDiv.querySelector('.outline').addEventListener('click', function() {
+        //         openDetailsModal(lands[i].name, lands[i].price, lands[i].id);
+        //     });
+
+        //     newDiv.addEventListener('click', function(event) {
+        //         if (event.target.classList.contains('buy-now-btn')) {
+        //             // Call buyNow when the "BUY NOW" button is clicked
+        //             buyNow(lands[i].id, lands[i].name, lands[i].state, lands[i].price, currentBalance, buyerId, lands[i].sellerCurrentBalance, lands[i].sellerPublicKey, lands[i].sellerId, lands[i].landId);
+        //         }
+        //     });
+        //   }
+        // }      
+      </script>
+
+<div id="sidebar">
+    <div id="logo">
+        <h1 id="userName"><i class="fa-solid fa-user" style="color: #ffffff;"></i><span id="userN"></span></h1>
+        <p id="walletAmount"><i class="fa-solid fa-wallet" style="color: #ffffff;"></i>Wallet $<span id="balance"></span></p>
+    </div>
+
+    <div id="nav">
+        <a href="buyer_dashboard.html"> <i class="fa-solid fa-gauge"></i>Dashboard</a>
+        <a href="owned_lands.html"> <i class="fa-solid fa-house" style="color: #ffffff;"></i>Owned Lands</a>
+        <!-- <a href="#">Make Payment</a> -->
+    </div>
+  
+</div>
+
+<div id="content">
+	<header>
+        <h1>Land Buyer Dashboard</h1>
+        <button id="logout" class="logoutbtn fill_logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i>Logout</button>
+    </header>
+    
+    <main>
+        <h3 style="color: #0e0635; text-align: center;">Available lands in ResCounty!</h3>
+        <div id="map" style="border: solid 3px #0e0635 "></div>
+        <section id="landListings">
+
+        </section>
+        <!-- Add this within the body tag, after the main content -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <!-- <h2>Confirmation</h2> -->
+            <p>Are you sure you want to buy this land for <strong>$<span id="modalPrice"></span>?</strong></p>
+            <button class="btn fill" onclick="confirmPurchase()">Confirm</button>
+            </div>
+        </div>
+
+        <div id="detailsModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeDetailsModal()">&times;</span>
+                <h2>Land Details</h2>
+                <p>City: <span id="detailsModalTitle"></span></p>
+                <p>Price: $<span id="detailsModalPrice"></span></p>
+                <p>Plot No: <span id="detailsModalID"></span></p>
+                <p>Zipcode: <span id="detailsModalZipcode"></span></p>
+            </div>
+        </div>
+  
+    </main>
+</div>
+
+<script>
+    function logout() {
+        localStorage.clear();
+        redirectToPage('login.html');
+    }
+</script>
+
+</body>
+
+<script>
+    const map = L.map('map', {
+//   minZoom: 2 // Set your desired minimum zoom level
+//   maxZoom:5
+}).setView([0, 0], 2); // Set an initial view and zoom level
+
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    map.setMaxBounds(null);
+
+    function getCoordinates(city, state) {
+      const apiKey = '5c17123882014420be166104e64026c9';
+      const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${city},${state}&key=${apiKey}`;
+
+      return fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const { lat, lng } = data.results[0].geometry;
+          return { lat, lng };
+        });
+    }
+
+    function addMarker(city, state) {
+      getCoordinates(city, state).then(({ lat, lng }) => {
+        L.marker([lat, lng]).addTo(map)
+          .bindPopup(`<b>${city}, ${state}</b>`);
+      });
+    }
+
+    // Example usage
+    // addMarker('New York', 'NY');
+    // addMarker('San Francisco', 'CA');
+    
+  </script>
+
+</html>

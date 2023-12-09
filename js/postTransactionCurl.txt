@@ -1,0 +1,17 @@
+curl --location --request POST 'https://cloud.resilientdb.com/graphql' \
+--header 'authority: cloud.resilientdb.com' \
+--header 'accept: */*' \
+--header 'accept-language: en-US,en-GB;q=0.9,en;q=0.8' \
+--header 'content-type: application/json' \
+--header 'origin: http://127.0.0.1:5503' \
+--header 'referer: http://127.0.0.1:5503/' \
+--header 'sec-ch-ua: "Google Chrome";v="119", "Chromium";v="119", "Not?A_Brand";v="24"' \
+--header 'sec-ch-ua-mobile: ?0' \
+--header 'sec-ch-ua-platform: "macOS"' \
+--header 'sec-fetch-dest: empty' \
+--header 'sec-fetch-mode: cors' \
+--header 'sec-fetch-site: cross-site' \
+--header 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36' \
+--data-raw '{
+    "query": "\n      query {\n          getFilteredTransactions(filter: {\n              ownerPublicKey: \"\"\n              recipientPublicKey: \"\"\n          }) {\n              id\n              version\n              amount\n              metadata\n              operation\n              asset\n              publicKey\n              uri\n              type\n          }\n      }\n  "
+}'

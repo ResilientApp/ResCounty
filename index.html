@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>ResCounty</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!-- <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript> -->
+		
+		<style>
+			.button-wrapper{
+				margin-top: 18px;
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+				padding: 0 1.75em;
+			}
+
+
+			.btn {
+				border: none;
+				padding: 32px 48px; /* Adjust the padding as needed */
+    			border-radius: 32px;
+				font-size: 24px;
+				font-size: 0.9rem;  
+				letter-spacing: 2px;  
+				cursor: pointer;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+			}
+
+			.outline {
+				background: transparent;
+				color: rgba(255, 255, 255, 0.9);
+				border: 1px solid rgba(255, 255, 255, 0.6);
+				transition: all .3s ease;
+				
+			}
+
+			.outline:hover{
+				transform: scale(1.05);
+			/* color: rgba(255, 255, 255, 0.9);
+			border-color: rgba(255, 255, 255, 0.9); */
+				transition: all .3s ease;  
+			}
+
+			.outline:disabled{
+				pointer-events: none;
+				opacity: 0.5;
+				transition: none; 
+				cursor: none;
+			}
+
+			.card {
+				box-shadow: 0 4px 8px rgb(0, 0, 0); /* Adjust values as needed */
+				border-radius: 20px;
+				width: 400px;
+    			height: 600px;
+				padding: 10px;
+			}
+
+			.card-img-top {
+				width: 100%; /* Make the image fill the entire width of the card */
+    			height: 100%;
+				object-fit: cover;
+				border-radius: 20px; /* Adjust the value for the desired level of rounding */
+				padding: 15px; /* Adjust the value according to your preference */
+				overflow: hidden; /* This is important to ensure the border-radius is applied */
+			}
+
+		</style>
+	</head>
+	<body class="is-preload">
+		<script>
+			window.redirectToPage = function(page) {
+				window.open(page, '_blank');
+			}
+		</script>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<a href="index.html" class="logo"><strong>ResCounty</strong></a>
+						<!-- <nav>
+							<a href="#menu">Menu</a>
+						</nav> -->
+					</header>
+
+				<!-- Banner -->
+					<section id="banner" class="major">
+						<div class="inner">
+							<header class="major">
+								<h1>Welcome to ResCounty</h1>
+							</header>
+							<div class="content">
+								<p>Resilient Land Transfers Begin Here!</p>
+								<div class="actions">
+									<button class="btn outline" onclick="redirectToPage('register.html')">Try Demo</button>
+									<!-- <a href="register.html" class="button next scrolly" target="_blank">Try Demo</a> -->
+								</div>
+							</div>
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one" class="tiles">
+								<article>
+									<span class="image">
+										<img src="images/pic01.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="https://github.com/ishajoglekar/ResCounty" target="_blank">GitHub</a></h3>
+										<p>Access our GitHub here.</p>
+									</header>
+								</article>
+								<article>
+									<span class="image">
+										<img src="images/pic02.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="https://medium.com/@ajinkyajc/rescounty-resilient-land-transfers-begin-here-6d3ff5a0a9f4" target="_blank"class="link">Blog</a></h3>
+										<p>Access our blog here.</p>
+									</header>
+								</article>
+								<!-- <article>
+									<span class="image">
+										<img src="images/pic03.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="landing.html" class="link">Magna</a></h3>
+										<p>Lorem etiam nullam</p>
+									</header>
+								</article> -->
+								<!-- <article>
+									<span class="image">
+										<img src="images/pic04.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="landing.html" class="link">Ipsum</a></h3>
+										<p>Nisl sed aliquam</p>
+									</header>
+								</article> -->
+								<!-- <article>
+									<span class="image">
+										<img src="images/pic05.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="landing.html" class="link">Consequat</a></h3>
+										<p>Ipsum dolor sit amet</p>
+									</header>
+								</article> -->
+								<!-- <article>
+									<span class="image">
+										<img src="images/pic06.jpg" alt="" />
+									</span>
+									<header class="major">
+										<h3><a href="landing.html" class="link">Etiam</a></h3>
+										<p>Feugiat amet tempus</p>
+									</header>
+								</article> -->
+							</section>
+
+						<!-- Two -->
+							<!-- <section id="two">
+								<div class="inner">
+									<header class="major">
+										<h2>Massa libero</h2>
+									</header>
+									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
+									
+								</div>
+							</section> -->
+
+							<section id="two">
+								<div class="inner">
+									<header class="major">
+										<h2>Team Members</h2>
+									</header>
+									<div class="box alt">
+										<div class="row gtr-50 gtr-uniform">
+											<div class="col-4"><span class="image fit"><img src="" alt="" /></span>
+												<div class="card">
+													<img src="./assets/images/aiman.jpeg" width="100%" style="border-radius: 40px;" class="card-img-top" alt="...">
+													<div class="card-body">
+													  <h5 class="card-title">Aiman Fatima<a href="#" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span><a href="https://www.linkedin.com/in/aiman-fatima1/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></h5>
+													  <p class="card-text">Aiman, the Backend Developer and Chief of Planning, handles backend tasks and leads strategic planning efforts for our projects.</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-4"><span class="image fit"><img src="" alt="" /></span>
+												<div class="card">
+													<img src="./assets/images/ajinkya.jpg" width="100%" style="border-radius: 40px;" class="card-img-top" alt="...">
+													<div class="card-body">
+													  <h5 class="card-title">Ajinkya Chaudhari<a href="#" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span><a href="#" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></h5>
+													  <p class="card-text">Ajinkya, our Frontend Developer and Lead of Documentation, creates user-friendly interfaces and keeps records of development.</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-4"><span class="image fit"><img src="" alt="" /></span>
+												<div class="card">
+													<img src="./assets/images/Isha - picture.jpg" width="100%" style="border-radius: 40px;" class="card-img-top" alt="...">
+													<div class="card-body">
+													  <h5 class="card-title">Isha Joglekar<a href="https://github.com/ishajoglekar" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span><a href="https://www.linkedin.com/in/isha-joglekar-8547631b2/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></h5>
+													  <p class="card-text">Isha, our Full Stack Developer and Team Lead, designs ResVault's backend components and ensuring smooth integration with ResCounty.</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-4"><span class="image fit"><img src="" alt="" /></span>
+												<div class="card">
+													<img src="./assets/images/Thrisha.JPG" width="100%" style="border-radius: 40px;" class="card-img-top" alt="...">
+													<div class="card-body">
+													  <h5 class="card-title">Thrisha Kopula<a href="https://github.com/ThrishaKopula" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span><a href="https://www.linkedin.com/in/thrisha-kopula/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></h5>
+													  <p class="card-text">Thrisha, our Lead Frontend Designer, adds a touch of visual brilliance to projects and contributes to strategic planning.</p>
+													</div>
+												</div>
+											</div>
+											<div class="col-4"><span class="image fit"><img src="" alt="" /></span>
+												<div class="card">
+													<img src="./assets/images/ujjawal.jpeg" width="100%" style="border-radius: 40px;" class="card-img-top" alt="...">
+													<div class="card-body">
+													  <h5 class="card-title">Ujjawal Panchal<a href="#" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span><a href="#" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></h5>
+													  <p class="card-text">Ujjawal, our System Architect & DevOps Manager, plans the system architecture and manages DevOps practices for ResCounty.</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+
+							<!-- <sectiopn id="team-members" class="container">
+								<h3>Team Members</h3>
+								<div class="row">
+									<div class="col-md-3">
+										<div class="card">
+											<img src="./assets/images/Isha - picture.jpg" width="100%" class="card-img-top" alt="...">
+											<div class="card-body">
+											  <h5 class="card-title">Isha Joglekar</h5>
+											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											  <a href="#" class="btn btn-primary">Go somewhere</a>
+											</div>
+										  </div>
+										  
+									</div>
+
+									<div class="col-md-3">
+										<div class="card">
+											<img src="./assets/images/Isha - picture.jpg" width="100%" class="card-img-top" alt="...">
+											<div class="card-body">
+											  <h5 class="card-title">Aiman Fatima</h5>
+											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											  <a href="#" class="btn btn-primary">Go somewhere</a>
+											</div>
+										  </div>
+										  
+									</div>
+
+									<div class="col-md-3">
+										<div class="card">
+											<img src="./assets/images/Isha - picture.jpg" width="100%" class="card-img-top" alt="...">
+											<div class="card-body">
+											  <h5 class="card-title">Ajinkya Chaudhari </h5>
+											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											  <a href="#" class="btn btn-primary">Go somewhere</a>
+											</div>
+										  </div>
+										  
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3">
+										<div class="card">
+											<img src="./assets/images/Isha - picture.jpg" width="100%" class="card-img-top" alt="...">
+											<div class="card-body">
+											  <h5 class="card-title">Ujjawal Panchal</h5>
+											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											  <a href="#" class="btn btn-primary">Go somewhere</a>
+											</div>
+										  </div>
+										  
+									</div>
+
+									<div class="col-md-3">
+										<div class="card">
+											<img src="./assets/images/Isha - picture.jpg" width="100%" class="card-img-top" alt="...">
+											<div class="card-body">
+											  <h5 class="card-title">Thrisha Kopula</h5>
+											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											  <a href="#" class="btn btn-primary">Go somewhere</a>
+											</div>
+										  </div>
+										  
+									</div>
+
+									<div class="col-md-3">
+										<div class="card">
+											<img src="./assets/images/Isha - picture.jpg" width="100%" class="card-img-top" alt="...">
+											<div class="card-body">
+											  <h5 class="card-title">Ajinkya Chaudhari </h5>
+											  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+											  <a href="#" class="btn btn-primary">Go somewhere</a>
+											</div>
+										  </div>
+										  
+									</div>
+								</div>
+							</sectiopn> -->
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="copyright">
+								<li>&copy; ResCounty, All Rights Reserved. University of California, Davis</li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
