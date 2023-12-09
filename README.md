@@ -6,10 +6,6 @@ ResCounty is a blockchain-based land registration system that offers a transform
 
 Please follow these steps for setting up and running the ResCounty project.
 
-## Prerequisites
-
-Before proceeding, ensure that you have Python 3 installed on your system.
-
 ## Step-by-Step Instructions
 
 ### Step 1: Install and Configure ResVault
@@ -24,6 +20,7 @@ Before proceeding, ensure that you have Python 3 installed on your system.
 
 If you prefer to run the project locally, please follow these sub-steps:
 
+0. Ensure that you have Python 3 installed on your system.
 1. **Clone the Repository:**
     - Execute the following commands in your terminal:
         ```
