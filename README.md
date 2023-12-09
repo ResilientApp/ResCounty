@@ -65,6 +65,10 @@ Here's the recording of the demo of our application -
 
 ---
 
+## 5. Blog
+
+[Medium Blog](https://medium.com/@ajinkyajc/rescounty-resilient-land-transfers-begin-here-6d3ff5a0a9f4)
+
 ## 5. Contributors
 
 - [Aiman Fatima](https://github.com/aimanfatima)
